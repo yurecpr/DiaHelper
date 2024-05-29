@@ -11,6 +11,7 @@ export const LayoutComponent = styled.div`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding:12px 20px;
   width: 100%;

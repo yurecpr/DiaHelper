@@ -13,6 +13,16 @@ export const LoginFormComponent = styled.form`
 
 export const LoginFormTitle = styled.h2`
 font-size: 24px;
+`;
 
+export const InputContainer = styled.div`
+display: flex;
+flex-direction: column;
+gap: 5px;
+`;
+
+
+export const ErrorMessage = styled.p`
+color: red;
+font-size: 12px;
 `
-

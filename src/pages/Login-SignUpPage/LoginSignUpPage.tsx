@@ -1,8 +1,13 @@
 import LoginForm from "components/LoginForm/LoginForm";
+import SignUpForm from "components/SignUpForm/SignUpForm";
+import { LoginSignUpContainer } from "./styles";
 
 function LoginSignUpPage() {
     return (
-        <LoginForm/>
+        <LoginSignUpContainer>
+            <LoginForm/>
+            <SignUpForm/>
+        </LoginSignUpContainer>
     )
 }
 

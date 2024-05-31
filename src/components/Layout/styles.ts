@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Logo } from "assets";
+import { Banner, Logo } from "assets";
 import { Link, NavLink } from "react-router-dom";
 
 export const LayoutComponent = styled.div`
@@ -15,8 +15,8 @@ export const Header = styled.header`
   align-items: center;
   padding:12px 20px;
   width: 100%;
-  background-color: #04BFBF;
-  color: white;
+  background-color: rgba(0, 90, 117, 0.8);
+  
 `;
 
 export const HeaderLogoContainer = styled(Link)`
@@ -46,7 +46,20 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 20px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url(${Banner});
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -54,6 +67,6 @@ export const Footer = styled.footer`
   align-items: center;
   padding: 12px;
   width: 100%;
-  background-color: #04BFBF;
+  background-color: rgba(0, 90, 117, 0.8);
   color: white;
 `;

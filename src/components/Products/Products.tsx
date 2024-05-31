@@ -1,4 +1,4 @@
-import  { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Button from "components/Button/Button";
 import {
   ButtonWrapper,
@@ -14,16 +14,18 @@ import {
 import Input from "components/Input/Input";
 import axios from "axios";
 import Spinner from "components/Spinner/Spinner";
+import { ProductDataProps } from "./types";
+import { ErrorMessage } from "components/LoginForm/styles";
 
 function Products() {
   const [product, setProduct] = useState<string>("");
-  const [foods, setFoods] = useState<any[]>([]);
+  const [foods, setFoods] = useState<ProductDataProps[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const API_URL = 'https://api.edamam.com/api/food-database/v2/parser';
-  const APP_ID = 'c63e1cf8'; 
-  const APP_KEY = 'e8c4b6181c7e3d306f3e87008ca63014';
+  const API_URL = "https://api.edamam.com/api/food-database/v2/parser";
+  const APP_ID = "c63e1cf8";
+  const APP_KEY = "e8c4b6181c7e3d306f3e87008ca63014";
 
   const fetchFoodData = async (product: string) => {
     try {
@@ -36,7 +38,7 @@ function Products() {
       });
       return response.data;
     } catch (error) {
-      console.error('Error fetching food data', error);
+      console.error("Error fetching food data", error);
       return null;
     }
   };
@@ -54,18 +56,19 @@ function Products() {
       setFoods([]);
       return;
     }
-    setIsLoading(true)
+    setIsLoading(true);
     setError(null);
     const data = await fetchFoodData(product);
-    setIsLoading(false);//////////////////////////////
+    setIsLoading(false);
     if (data && data.hints.length > 0) {
-      const newFoods = data.hints.map((hint:any) => ({
+      const newFoods = data.hints.map((hint: any) => ({
         name: hint.food.label,
         image: hint.food.image,
         calories: hint.food.nutrients.ENERC_KCAL,
         fat: hint.food.nutrients.FAT,
-        
       }));
+      console.log(newFoods);
+
       setFoods(newFoods);
     } else {
       setFoods([]);
@@ -81,7 +84,7 @@ function Products() {
     return foods.map((food, index) => (
       <ProductCard key={index}>
         <ProductTitle>{food.name}</ProductTitle>
-        <ProductImage src={food.image} alt={food.name}/>
+        <ProductImage src={food.image} alt={food.name} />
         <ProductText>Calories: {food.calories}</ProductText>
         <ProductText>Fat: {food.fat}</ProductText>
       </ProductCard>
@@ -104,11 +107,9 @@ function Products() {
         </InputButtonWrapper>
       </ProductsForm>
       {isLoading && <Spinner />}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       {foods.length > 0 && (
-        <ProductsCardsWrapper>
-        {renderProductCards()}
-        </ProductsCardsWrapper>
+        <ProductsCardsWrapper>{renderProductCards()}</ProductsCardsWrapper>
       )}
     </ProductsContainer>
   );

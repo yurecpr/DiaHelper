@@ -1,20 +1,12 @@
 import styled from "@emotion/styled";
 
-const randomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
-
 export const ProductsContainer = styled.div`
-display: flex;
+  display: flex;
   flex: 1;
-  
+  gap: 20px;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
 `;
 
 export const ProductsForm = styled.form`
@@ -34,43 +26,40 @@ export const InputButtonWrapper = styled.div`
   gap: 12px;
 `;
 
-export const ButtonWrapper = styled.div`
-  
-`;
+export const ButtonWrapper = styled.div``;
 
 export const ProductsCardsWrapper = styled.div`
-display: flex;
-flex-wrap:wrap;
-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 `;
 
 export const ProductCard = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 10px;
-padding: 15px;
-border: 2px solid #037353;
-border-radius: 20px;
-background-color: ${randomColor};
-margin-top: 10px;
-
-
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border: 2px solid #037353;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #ffffff 0%, #669cac 100%);
+  color: white;
+  width: 300px;
+  margin: 15px;
+`;
 export const ProductTitle = styled.h3`
-width: 100%;
-border-radius: 20px;
-padding: 7px;
-text-align: center;
-background-color: #666666;
-color: white;
-
-`
+  width: 100%;
+  border-radius: 20px;
+  padding: 7px;
+  text-align: center;
+  background-color: rgba(102, 102, 102, 0.5);
+  color: white;
+`;
 export const ProductImage = styled.img`
-width: 150px;
-border-radius: 10px;
-`
+  width: 150px;
+  border-radius: 10px;
+`;
 export const ProductText = styled.p`
-font-size: 19px;
-
-`
+  font-size: 19px;
+`;

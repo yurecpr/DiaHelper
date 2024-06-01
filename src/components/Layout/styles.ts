@@ -70,3 +70,33 @@ export const Footer = styled.footer`
   background-color: rgba(0, 90, 117, 0.8);
   color: white;
 `;
+
+export const SocialIcons = styled.footer`
+  display: flex;
+  padding-left: 39%;
+  gap: 30px;
+
+a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #007bff; 
+}
+`;
+
+export const ContactsContainer = styled.footer`
+  color: white;
+  padding-left: 350px;
+  
+
+a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #007bff;
+}
+`;

@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import {
   Footer,
   Header,
@@ -8,7 +10,8 @@ import {
   NavContainer,
   StyledNavLink,
   ContactsContainer,
-  SocialIcons,
+  SocialIconsContainer,
+  ContactLink,
 } from "./styles";
 import { LayotProps } from "./types";
 import { FaFacebook, FaTwitter, FaInstagram} from 'react-icons/fa';
@@ -62,21 +65,22 @@ function Layout({ children }: LayotProps) {
         <HeaderLogoContainer to="/">
           <HeaderLogo />
         </HeaderLogoContainer>
-        <SocialIcons>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook size={30} />
-        </a>
-        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter size={30} />
-        </a>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram size={30} />
-        </a>
-      </SocialIcons>
+        <SocialIconsContainer>
+       
+        <ContactLink href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faFacebook} size="2x"/>
+        </ContactLink>
+        <ContactLink href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+        </ContactLink>
+        <ContactLink href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+        </ContactLink>
+      </SocialIconsContainer>
       <ContactsContainer>
-        <h4>Contact us</h4>
-          <p><a href="tel:+4988888888">+49 888 88 888</a></p>
-          <p><a href="mailto:diahelper@gmail.com">diahelper@gmail.com</a></p>
+        Contact us
+          <ContactLink href="tel:+4988888888">+49 888 88 888</ContactLink>
+          <ContactLink href="mailto:diahelper@gmail.com">diahelper@gmail.com</ContactLink>
       </ContactsContainer>
       </Footer>
     </LayoutComponent>

@@ -39,6 +39,7 @@ export const ProductCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   gap: 10px;
   padding: 15px;
   border: 2px solid #037353;

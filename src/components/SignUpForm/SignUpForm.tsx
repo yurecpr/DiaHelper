@@ -37,9 +37,6 @@ import Button from "components/Button/Button";
     },
   });
 
-
-
-
   return (
     <SignUpComponent onSubmit={formik.handleSubmit}>
       <SignUpTitle>Sign Up Form</SignUpTitle>

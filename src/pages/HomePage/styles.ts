@@ -33,5 +33,6 @@ color: white;
 `
 export const ButtonsWrap = styled.div`
 display: flex;
+flex-wrap: wrap;
 gap: 15px;
-`
+`;

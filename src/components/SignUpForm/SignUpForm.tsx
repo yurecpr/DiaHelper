@@ -9,8 +9,8 @@ import Button from "components/Button/Button";
   const shema = Yup.object().shape({
     [SIGN_UP_FIELD_NAMES.FIRST_NAME]: Yup.string()
       .required("Filed first name is required"),
-    [SIGN_UP_FIELD_NAMES.SECOND_NAME]: Yup.string()
-      .required("Filed second name is required"),
+    [SIGN_UP_FIELD_NAMES.SURNAME]: Yup.string()
+      .required("Filed surname is required"),
     [SIGN_UP_FIELD_NAMES.EMAIL]: Yup.string()
       .required("Filed email is required")
       .email("Filed type email"),
@@ -23,7 +23,7 @@ import Button from "components/Button/Button";
   const formik = useFormik({
     initialValues: {
       [SIGN_UP_FIELD_NAMES.FIRST_NAME]: "",
-      [SIGN_UP_FIELD_NAMES.SECOND_NAME]: "",
+      [SIGN_UP_FIELD_NAMES.SURNAME]: "",
       [SIGN_UP_FIELD_NAMES.EMAIL]: "",
       [SIGN_UP_FIELD_NAMES.PASSWORD]: "",
       [SIGN_UP_FIELD_NAMES.CONFIRM_PASSWORD]: "",
@@ -55,12 +55,12 @@ import Button from "components/Button/Button";
       </InputContainer>
       <InputContainer>
       <Input
-          name={ SIGN_UP_FIELD_NAMES.SECOND_NAME}
-          placeholder="Enter your second name"
-          label="Second name"
+          name={ SIGN_UP_FIELD_NAMES.SURNAME}
+          placeholder="Enter your surname"
+          label="Surname"
           onInputChange={formik.handleChange}
-          value={formik.values[SIGN_UP_FIELD_NAMES.SECOND_NAME]}/>
-        <ErrorMessage>{formik.errors[SIGN_UP_FIELD_NAMES.SECOND_NAME]}</ErrorMessage>
+          value={formik.values[SIGN_UP_FIELD_NAMES.SURNAME]}/>
+        <ErrorMessage>{formik.errors[SIGN_UP_FIELD_NAMES.SURNAME]}</ErrorMessage>
       </InputContainer>
       </InputsContainer>
 

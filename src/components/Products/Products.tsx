@@ -16,6 +16,9 @@ import axios from "axios";
 import Spinner from "components/Spinner/Spinner";
 import { ProductDataProps } from "./types";
 import { ErrorMessage } from "components/LoginForm/styles";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+
 
 function Products() {
   const [product, setProduct] = useState<string>("");
@@ -64,8 +67,8 @@ function Products() {
       const newFoods = data.hints.map((hint: any) => ({
         name: hint.food.label,
         image: hint.food.image,
-        calories: hint.food.nutrients.ENERC_KCAL,
-        fat: hint.food.nutrients.FAT,
+        calories: hint.food.nutrients.ENERC_KCAL.toFixed(1),
+        fat: hint.food.nutrients.FAT.toFixed(1),
       }));
       console.log(newFoods);
 
@@ -84,7 +87,11 @@ function Products() {
     return foods.map((food, index) => (
       <ProductCard key={index}>
         <ProductTitle>{food.name}</ProductTitle>
-        <ProductImage src={food.image} alt={food.name} />
+        {food.image ? (
+          <ProductImage src={food.image} alt={food.name} />
+        ) : (
+          <FontAwesomeIcon icon={faUtensils} size="5x" />
+        )}
         <ProductText>Calories: {food.calories}</ProductText>
         <ProductText>Fat: {food.fat}</ProductText>
       </ProductCard>

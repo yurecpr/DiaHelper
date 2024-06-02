@@ -14,7 +14,6 @@ import {
   ContactLink,
 } from "./styles";
 import { LayotProps } from "./types";
-import { FaFacebook, FaTwitter, FaInstagram} from 'react-icons/fa';
 
 function Layout({ children }: LayotProps) {
   return (

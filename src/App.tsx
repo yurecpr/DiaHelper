@@ -4,6 +4,7 @@ import Layout from "components/Layout/Layout";
 import LoginSignUpPage from "pages/Login-SignUpPage/LoginSignUpPage";
 import UserPage from "pages/UserPage/UserPage";
 import HomePage from "pages/HomePage/HomePage";
+import InfoPage from "pages/InfoPage/InfoPage";
 import ProductPage from "pages/ProductPage/ProductPage";
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/products" element={<ProductPage />} />
           <Route path="/login" element={<LoginSignUpPage />} />
           <Route path="/user" element={<UserPage />} />
+          <Route path="/info-page" element={<InfoPage />} />
 
           <Route path="*" element="Page Not Found" />
         </Routes>

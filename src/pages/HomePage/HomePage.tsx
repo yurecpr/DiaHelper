@@ -5,21 +5,26 @@ import {
   TextContainer,
   TextContent,
 } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate = useNavigate();
   return (
     <HomeContainer>
       <TextContainer>
         <TextContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Reprehenderit, consectetur! Ab, fugiat maiores optio nulla aliquid
-          laboriosam veniam ad officia hic esse, debitis quod eos blanditiis
-          impedit quam eveniet asperiores!Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Enim ullam omnis repudiandae quasi quod voluptate!
+          <p>Welcome to DiaHelper App!</p>Go directly to registration and let us
+          create for you the best nutrition plan which helps you to live a
+          healthy life. Or you can find all the necessary information on the
+          diabetes by clicking on "Learn more" button. Change your lifestyle
+          with DiaHelper!
         </TextContent>
         <ButtonsWrap>
-          <Button name="START" />
-          <Button name="LEARN MORE" />
+          <Button name="START" onButtonClick={() => navigate("/login")} />
+          <Button
+            name="LEARN MORE"
+            onButtonClick={() => navigate("/info-page")}
+          />
         </ButtonsWrap>
       </TextContainer>
     </HomeContainer>

@@ -1,9 +1,13 @@
 import Products from "components/Products/Products";
+import { ProductPageContainer } from "./styles";
 
 
 function ProductPage() {
   return (
-    <Products/>
+    <ProductPageContainer>
+      <Products/>
+    </ProductPageContainer>
+    
   )
 }
 export default ProductPage;

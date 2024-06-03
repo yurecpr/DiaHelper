@@ -6,21 +6,11 @@ export const LayoutComponent = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  position: relative;
-  z-index: 1; 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; 
-    width: 100%;
-    height: 100%;
-    background-image: url(${Banner});
+  background-image: url(${Banner});
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.3;
-  }
+    background-position: center;
+  
 `;
 
 export const Header = styled.header`
@@ -61,7 +51,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
-  
+  background-color: rgba(215, 213, 213, 0.3);
+  z-index: 2;
 `;
 
 export const Footer = styled.footer`

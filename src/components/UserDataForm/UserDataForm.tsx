@@ -119,7 +119,7 @@ import UserValues, { USER_DATA_FORM_FIELD_NAMES } from "types/User";
         <ErrorMessage>{formik.errors[USER_DATA_FORM_FIELD_NAMES.HEIGHT]}</ErrorMessage>
       </InputContainer>
       </InputsContainer>
-      <Button type="submit" name="Save Data" />
+      <Button type="button" name="Save Data" />
     </UserDataFormComponent>
   )
 }

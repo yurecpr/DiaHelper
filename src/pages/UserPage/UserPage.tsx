@@ -25,6 +25,9 @@ export default function UserPage() {
         <UserInfoWrapper>
           <FontAwesomeIcon icon={faFaceGrinBeam} size="4x"/>
           <UserName>{user?.name}</UserName>
+          {/* <UserName>{user?.email}</UserName>
+          <UserName>{user?.height}</UserName>
+          <UserName>{user?.weight}</UserName> */}
         </UserInfoWrapper>
       <Button name="&#8744;"/>
       <UserDataForm/>

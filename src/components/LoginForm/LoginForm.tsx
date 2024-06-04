@@ -2,6 +2,7 @@ import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 import {
   ErrorMessage,
+  ForgotPasswordLink,
   InputContainer,
   LoginFormComponent,
   LoginFormTitle,
@@ -16,11 +17,9 @@ function LoginForm() {
       .required("Filed email is required")
       .email("Filed type email"),
     [LOGIN_FIELD_NAMES.PASSWORD]: Yup.number()
-      .typeError("Password must be number")
       .required("Filed password is required")
-      .max(10, "Max 10 symbols")
-      .min(3, "Min 3 symbols"),
   });
+
   const formik = useFormik({
     initialValues: {
       [LOGIN_FIELD_NAMES.EMAIL]: "",
@@ -33,11 +32,10 @@ function LoginForm() {
       console.log(values);
     },
   });
-  // console.log(formik);
 
   return (
     <LoginFormComponent onSubmit={formik.handleSubmit}>
-      <LoginFormTitle>Login form</LoginFormTitle>
+      <LoginFormTitle>Login</LoginFormTitle>
       <InputContainer>
         <Input
           name={LOGIN_FIELD_NAMES.EMAIL}
@@ -60,6 +58,9 @@ function LoginForm() {
         <ErrorMessage>{formik.errors[LOGIN_FIELD_NAMES.PASSWORD]}</ErrorMessage>
       </InputContainer>
       <Button type="submit" name="Login" />
+      <ForgotPasswordLink >
+        Forgot Password?
+      </ForgotPasswordLink>
     </LoginFormComponent>
   );
 }

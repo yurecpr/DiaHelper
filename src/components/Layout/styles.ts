@@ -21,7 +21,7 @@ export const Header = styled.header`
   padding: 12px 20px;
   width: 100%;
   background-color: rgba(118, 118, 118, 0.33);
-  z-index: 3; 
+
 `;
 
 export const HeaderLogoContainer = styled(Link)`
@@ -38,6 +38,7 @@ HeaderLogo.defaultProps = { src: Logo };
 
 export const NavContainer = styled.nav`
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 `;
 
@@ -52,7 +53,7 @@ export const Main = styled.main`
   flex-direction: column;
   flex: 1;
   background-color: rgba(215, 213, 213, 0.3);
-  z-index: 2;
+ 
 `;
 
 export const Footer = styled.footer`
@@ -64,7 +65,6 @@ export const Footer = styled.footer`
   padding: 12px;
   width: 100%;
   background-color: rgba(118, 118, 118, 0.33);
-  z-index:1;
 `;
 
 

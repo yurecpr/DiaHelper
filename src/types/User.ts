@@ -15,11 +15,9 @@ export default interface UserValues {
   }
 
   export enum USER_DATA_FORM_FIELD_NAMES {
-    FIRST_NAME = 'name',
-    EMAIL = 'email',
-    PASSWORD = 'password',
     GLUCOSE_LEVEL = 'glucoseLevel',
+    AGE = 'age',
     WEIGHT = 'weight',
     HEIGHT ='height',
-    AGE = 'age',
+    
 }

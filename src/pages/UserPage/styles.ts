@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface isVisibleProps {
+isVisible: boolean,
+}
+
 export const UserPageContainer  = styled.div`
 display: flex;
 flex-wrap: wrap;
@@ -17,7 +21,7 @@ padding: 15px;
 width: 100%;
 gap: 20px;
 color: white;
-background-color: rgba(0, 33, 77, 0.8);
+background-color: rgba(0, 33, 77, 0.5);
 `;
 export const UserInfoWrapper  = styled.div`
 display: flex;
@@ -25,11 +29,18 @@ align-items: center;
 gap: 30px;
 
 `
-
-
 export const UserName  = styled.h3`
 font-size: 20px;
 `;
+export const FormWrapper = styled.div<isVisibleProps>`
+  max-height: ${({ isVisible }) => (isVisible ? "500px" : "0")};
+  overflow: hidden;
+  transition:  0.8s ease-in-out;
+ 
+`;
+
+
+
 export const FavoriteInfoContainer  = styled.div`
 
 `;

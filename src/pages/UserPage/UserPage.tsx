@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import User from 'types/User';
-import { FavoriteInfoContainer, UserFavoriteContainer, UserInfoContainer, UserInfoWrapper, UserMenuContainer, UserName, UserPageContainer } from "./styles";
+import { FavoriteInfoContainer, FormWrapper, UserFavoriteContainer, UserInfoContainer, UserInfoWrapper, UserMenuContainer, UserName, UserPageContainer } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceGrinBeam } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faFaceGrinBeam } from "@fortawesome/free-solid-svg-icons";
 import Button from "components/Button/Button";
 import UserDataForm from "components/UserDataForm/UserDataForm";
 
 export default function UserPage() {
   const [user, setUser] = useState<User | undefined>(undefined);
+  const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
 
   async function fetchUser(id: number) {
     const res = await fetch(`/api/users?id=${id}`);
@@ -19,18 +20,21 @@ export default function UserPage() {
     fetchUser(1);
   }, []);
 
+  const toggleFormVisibility = () => {
+    setIsFormVisible((prev) => !prev);
+  };
+
   return (
     <UserPageContainer>
       <UserInfoContainer>
         <UserInfoWrapper>
           <FontAwesomeIcon icon={faFaceGrinBeam} size="4x"/>
           <UserName>{user?.name}</UserName>
-          {/* <UserName>{user?.email}</UserName>
-          <UserName>{user?.height}</UserName>
-          <UserName>{user?.weight}</UserName> */}
         </UserInfoWrapper>
-      <Button name="&#8744;"/>
-      <UserDataForm/>
+      <Button onButtonClick={toggleFormVisibility}><FontAwesomeIcon icon={isFormVisible ? faChevronUp : faChevronDown} /></Button>
+      <FormWrapper isVisible={isFormVisible}>
+        <UserDataForm />
+      </FormWrapper>
       </UserInfoContainer>
       
       <FavoriteInfoContainer>

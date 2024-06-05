@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import  { ChangeEvent, createContext, useContext, useState } from "react";
 import Button from "components/Button/Button";
 import {
   ButtonWrapper,
@@ -14,10 +14,33 @@ import {
 import Input from "components/Input/Input";
 import axios from "axios";
 import Spinner from "components/Spinner/Spinner";
-import { ProductDataProps } from "./types";
+import { FavoritesContextProps, ProductDataProps } from "./types";
 import { ErrorMessage } from "components/LoginForm/styles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMagnifyingGlass, faUtensils } from '@fortawesome/free-solid-svg-icons';
+
+
+
+export const FavoritesContext = createContext<FavoritesContextProps | undefined>(undefined);
+export const FavoritesContextProvider = ({children}) => {
+  const [favorites, setFavorites] = useState<ProductDataProps[]>([]);
+  
+  const addFavorite = (product: ProductDataProps) => {
+    setFavorites((prevFavorites) => [...prevFavorites, product]);
+  };
+  return (
+    <FavoritesContext.Provider value={{favorites,addFavorite}}>
+      {children}
+    </FavoritesContext.Provider>
+  )
+};
+export const useFavorites = () => {
+  const context = useContext(FavoritesContext);
+  if (!context) {
+    throw new Error('useFavorites must be used within a FavoritesProvider');
+  }
+  return context;
+};
 
 
 function Products() {
@@ -25,6 +48,8 @@ function Products() {
   const [foods, setFoods] = useState<ProductDataProps[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { addFavorite } = useFavorites();
 
   const API_URL = "https://api.edamam.com/api/food-database/v2/parser";
   const APP_ID = "c63e1cf8";
@@ -62,6 +87,7 @@ function Products() {
     setIsLoading(true);
     setError(null);
     const data = await fetchFoodData(product);
+    console.log(data);
     setIsLoading(false);
     if (data && data.hints.length > 0) {
       const newFoods = data.hints.map((hint: any) => ({
@@ -69,9 +95,9 @@ function Products() {
         image: hint.food.image,
         calories: hint.food.nutrients.ENERC_KCAL.toFixed(1),
         fat: hint.food.nutrients.FAT.toFixed(1),
+       
       }));
       console.log(newFoods);
-
       setFoods(newFoods);
     } else {
       setFoods([]);
@@ -83,8 +109,10 @@ function Products() {
     setProduct(event.target.value);
   };
 
+
   const renderProductCards = () => {
     return foods.map((food, index) => (
+      
       <ProductCard key={index}>
         <ProductTitle>{food.name}</ProductTitle>
         {food.image ? (
@@ -94,7 +122,12 @@ function Products() {
         )}
         <ProductText>Calories: {food.calories}</ProductText>
         <ProductText>Fat: {food.fat}</ProductText>
+        
+        <Button onButtonClick={() => addFavorite(food)}>
+          <FontAwesomeIcon icon={faHeart} /> Add to Favorites
+        </Button>
       </ProductCard>
+      
     ));
   };
 
@@ -109,7 +142,7 @@ function Products() {
             name="product"
           />
           <ButtonWrapper>
-            <Button name="search" type="submit" />
+            <Button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass}/></Button>
           </ButtonWrapper>
         </InputButtonWrapper>
       </ProductsForm>
@@ -119,7 +152,8 @@ function Products() {
         <ProductsCardsWrapper>{renderProductCards()}</ProductsCardsWrapper>
       )}
     </ProductsContainer>
+    
   );
 }
-
 export default Products;
+

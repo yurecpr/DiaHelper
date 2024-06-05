@@ -18,11 +18,13 @@ flex-direction: column;
 align-items: center;
 
 padding: 15px;
-width: 100%;
+width: 40%;
 gap: 20px;
 color: white;
 background-color: rgba(0, 33, 77, 0.5);
+border-radius: 100px 100px 0 0;
 `;
+
 export const UserInfoWrapper  = styled.div`
 display: flex;
 align-items: center;
@@ -43,6 +45,7 @@ export const FormWrapper = styled.div<isVisibleProps>`
 
 export const FavoriteInfoContainer  = styled.div`
 
+
 `;
 
 export const UserMenuContainer  = styled.div`
@@ -50,6 +53,6 @@ export const UserMenuContainer  = styled.div`
 `;
 
 export const UserFavoriteContainer  = styled.div`
-
+display: flex;
 `;
 

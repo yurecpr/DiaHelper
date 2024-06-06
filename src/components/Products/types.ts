@@ -1,4 +1,5 @@
 export interface ProductDataProps {
+    id: string,
     name: string,
     image: string,
     calories: number,
@@ -9,4 +10,5 @@ export interface ProductDataProps {
 export interface FavoritesContextProps {
     favorites: ProductDataProps[];
     addFavorite: (product: ProductDataProps) => any;
+    removeFromFavorites: (productName: string) => any;
   }

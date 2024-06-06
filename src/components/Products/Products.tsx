@@ -1,4 +1,4 @@
-import  { ChangeEvent, createContext, useContext, useState } from "react";
+import { ChangeEvent, ReactNode, createContext, useContext, useState } from "react";
 import Button from "components/Button/Button";
 import {
   ButtonWrapper,
@@ -16,32 +16,41 @@ import axios from "axios";
 import Spinner from "components/Spinner/Spinner";
 import { FavoritesContextProps, ProductDataProps } from "./types";
 import { ErrorMessage } from "components/LoginForm/styles";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faMagnifyingGlass, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faMagnifyingGlass,
+  faUtensils,
+} from "@fortawesome/free-solid-svg-icons";
 
+export const FavoritesContext = createContext<
+  FavoritesContextProps | undefined
+>(undefined);
 
-
-export const FavoritesContext = createContext<FavoritesContextProps | undefined>(undefined);
-export const FavoritesContextProvider = ({children}) => {
+export const FavoritesContextProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<ProductDataProps[]>([]);
-  
+
   const addFavorite = (product: ProductDataProps) => {
     setFavorites((prevFavorites) => [...prevFavorites, product]);
-  };
-  return (
-    <FavoritesContext.Provider value={{favorites,addFavorite}}>
-      {children}
-    </FavoritesContext.Provider>
-  )
+   };
+    const removeFromFavorites = (productName: string) => {
+      setFavorites((prevFavorites) => prevFavorites.filter((product) => product.name !== productName));
+    }
+
+    return (
+      <FavoritesContext.Provider value={{ favorites, addFavorite, removeFromFavorites}}>
+        {children}
+      </FavoritesContext.Provider>
+    );
+ 
 };
 export const useFavorites = () => {
   const context = useContext(FavoritesContext);
   if (!context) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
+    throw new Error("useFavorites must be used within a FavoritesProvider");
   }
   return context;
 };
-
 
 function Products() {
   const [product, setProduct] = useState<string>("");
@@ -91,11 +100,11 @@ function Products() {
     setIsLoading(false);
     if (data && data.hints.length > 0) {
       const newFoods = data.hints.map((hint: any) => ({
+        id: hint.food.foodId,
         name: hint.food.label,
         image: hint.food.image,
         calories: hint.food.nutrients.ENERC_KCAL.toFixed(1),
         fat: hint.food.nutrients.FAT.toFixed(1),
-       
       }));
       console.log(newFoods);
       setFoods(newFoods);
@@ -109,10 +118,8 @@ function Products() {
     setProduct(event.target.value);
   };
 
-
   const renderProductCards = () => {
     return foods.map((food, index) => (
-      
       <ProductCard key={index}>
         <ProductTitle>{food.name}</ProductTitle>
         {food.image ? (
@@ -120,14 +127,13 @@ function Products() {
         ) : (
           <FontAwesomeIcon icon={faUtensils} size="5x" />
         )}
-        <ProductText>Calories: {food.calories}</ProductText>
+        <ProductText>{food.calories} kcal</ProductText>
         <ProductText>Fat: {food.fat}</ProductText>
-        
+
         <Button onButtonClick={() => addFavorite(food)}>
           <FontAwesomeIcon icon={faHeart} /> Add to Favorites
         </Button>
       </ProductCard>
-      
     ));
   };
 
@@ -142,7 +148,9 @@ function Products() {
             name="product"
           />
           <ButtonWrapper>
-            <Button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass}/></Button>
+            <Button type="submit">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Button>
           </ButtonWrapper>
         </InputButtonWrapper>
       </ProductsForm>
@@ -152,8 +160,6 @@ function Products() {
         <ProductsCardsWrapper>{renderProductCards()}</ProductsCardsWrapper>
       )}
     </ProductsContainer>
-    
   );
 }
 export default Products;
-

@@ -7,6 +7,7 @@ isVisible: boolean,
 export const UserPageContainer  = styled.div`
 display: flex;
 flex-wrap: wrap;
+gap: 20px;
 flex-direction: column;
 align-items: center;
 padding: 20px;
@@ -21,7 +22,7 @@ padding: 15px;
 width: 40%;
 gap: 20px;
 color: white;
-background-color: rgba(0, 33, 77, 0.5);
+background-color: rgba(0, 33, 77, 0.63);
 border-radius: 100px 100px 0 0;
 `;
 
@@ -44,15 +45,30 @@ export const FormWrapper = styled.div<isVisibleProps>`
 
 
 export const FavoriteInfoContainer  = styled.div`
-
+display: flex;
+width: 100%;
+gap: 15px;
+justify-content: space-around;
 
 `;
 
-export const UserMenuContainer  = styled.div`
+export const RemoveButtonWrapper  = styled.div`
+position: absolute;
+top: 10px;
+right: 10px;
+`
 
+export const UserMenuContainer  = styled.div`
+background-color: rgba(0, 33, 77, 0.73);
+width: 50%;
 `;
 
 export const UserFavoriteContainer  = styled.div`
+width: 50%;
 display: flex;
+flex-wrap: wrap;
+justify-content: center;
+background-color: rgba(0, 33, 77, 0.5);
+
 `;
 

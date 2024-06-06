@@ -10,6 +10,8 @@ export const LayoutComponent = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+
   
 `;
 
@@ -21,7 +23,10 @@ export const Header = styled.header`
   padding: 12px 20px;
   width: 100%;
   background-color: rgba(118, 118, 118, 0.33);
-
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 1;
 `;
 
 export const HeaderLogoContainer = styled(Link)`

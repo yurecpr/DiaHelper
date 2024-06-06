@@ -5,6 +5,7 @@ import { SIGN_UP_FIELD_NAMES, SignUpValues } from "./types";
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 import { useState } from "react";
+import axios from "axios";
 
  function SignUpForm() {
   const [successMessage, setSuccessMessage] = useState<string>("");
@@ -27,7 +28,7 @@ import { useState } from "react";
     validateOnChange: false,
     validateOnMount: false,
     onSubmit: (values: SignUpValues) => {
-      console.log(values);
+      axios.post("/api/register", values);
       setSuccessMessage("We sent the password to your email address");
     },
   });

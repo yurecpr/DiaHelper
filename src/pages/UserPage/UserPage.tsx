@@ -27,11 +27,17 @@ import {
   ProductText,
   ProductTitle,
 } from "components/Products/styles";
+import { useLocation } from "react-router-dom";
 
 export default function UserPage() {
   const [user, setUser] = useState<User | undefined>(undefined);
   const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
   const { favorites, removeFromFavorites } = useFavorites();
+
+  const location = useLocation();
+
+  const email = location.state?.email;
+  console.log(email);
 
   async function fetchUser(id: number) {
     const res = await fetch(`/api/users?id=${id}`);
@@ -52,7 +58,7 @@ export default function UserPage() {
       <UserInfoContainer>
         <UserInfoWrapper>
           <FontAwesomeIcon icon={faFaceGrinBeam} size="4x" />
-          <UserName>{user?.name}</UserName>
+          {/* <UserName>{user?.name}</UserName> */}
         </UserInfoWrapper>
         <FormWrapper isVisible={isFormVisible}>
           <UserDataForm />

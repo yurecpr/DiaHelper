@@ -6,13 +6,12 @@ import UserPage from "pages/UserPage/UserPage";
 import HomePage from "pages/HomePage/HomePage";
 import InfoPage from "pages/InfoPage/InfoPage";
 import ProductPage from "pages/ProductPage/ProductPage";
-import { FavoritesContextProvider } from "components/Products/Products";
 
 
 function App() {
 
   return (
-    <FavoritesContextProvider>
+    
     <BrowserRouter>
       <GlobalStyles />
      <Layout>
@@ -27,7 +26,7 @@ function App() {
         </Routes>
      </Layout>
     </BrowserRouter>
-    </FavoritesContextProvider>
+   
   );
 }
 

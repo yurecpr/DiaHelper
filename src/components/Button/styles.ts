@@ -14,5 +14,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
     color: white;
     font-size: 16px;
     cursor: pointer;
+    outline: 0px ;
+    &:active {
+      transform: scale(0.85);
+    }
+    &:hover {
+      outline: 2px solid white;
+      transition: outline 0.3s linear;
+     
+    }
 `;
 

@@ -10,8 +10,15 @@ import {
 import { useFormik } from "formik";
 import { LoginFormValues, LOGIN_FIELD_NAMES } from "./types";
 import * as Yup from "yup";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // Додано стан для зберігання повідомлення про помилку
+
+  
   const shema = Yup.object().shape({
     [LOGIN_FIELD_NAMES.EMAIL]: Yup.string()
       .required("Filed email is required")
@@ -29,9 +36,27 @@ function LoginForm() {
     validateOnChange: false,
     validateOnMount: false,
     onSubmit: (values: LoginFormValues) => {
+      axios.post("/api/auth/login", values).then(() => {
+        setErrorMessage(null);
+          navigate("/user", { state: { email: values.email } });
+         }).catch(error => {
+          setErrorMessage("Invalid email or password");
+           console.error("Login failed", error);
+         });
       console.log(values);
+      
     },
   });
+
+  const resetPassword = () => {
+    axios.post("api/auth/update", { email: formik.values[LOGIN_FIELD_NAMES.EMAIL] })
+      .then(() => {
+        alert("Password reset email sent!");
+      })
+      .catch(error => {
+        console.error("Failed to send password reset email", error);
+      });
+  };
 
   return (
     <LoginFormComponent onSubmit={formik.handleSubmit}>
@@ -49,7 +74,7 @@ function LoginForm() {
       <InputContainer>
         <Input
           name={LOGIN_FIELD_NAMES.PASSWORD}
-          type="text"
+          type="password"
           placeholder="Enter your password"
           label="Password"
           onInputChange={formik.handleChange}
@@ -58,7 +83,8 @@ function LoginForm() {
         <ErrorMessage>{formik.errors[LOGIN_FIELD_NAMES.PASSWORD]}</ErrorMessage>
       </InputContainer>
       <Button type="submit" name="Login" />
-      <ForgotPasswordLink >
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      <ForgotPasswordLink onClick={resetPassword}>
         Forgot Password?
       </ForgotPasswordLink>
     </LoginFormComponent>

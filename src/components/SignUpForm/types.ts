@@ -1,9 +1,9 @@
 export interface SignUpValues {
-    userName: string,
+    username: string,
     email: string,
 }
 export enum SIGN_UP_FIELD_NAMES {
-    USER_NAME = 'userName',
+    USER_NAME = 'username',
     EMAIL = 'email',
     
 }

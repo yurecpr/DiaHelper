@@ -41,12 +41,11 @@ export const ProductCard = styled.div`
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  padding: 15px;
+  padding: 20px;
   border: 2px solid #037353;
   border-radius: 20px;
   background: linear-gradient(to bottom, #ffffff 0%, #669cac 100%);
   color: white;
-  width: 300px;
   margin: 15px;
 `;
 export const ProductTitle = styled.h3`

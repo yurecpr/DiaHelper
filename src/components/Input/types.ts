@@ -2,7 +2,7 @@ type InputType = "button" | "checkbox" | "email" | "number" | "password" | "radi
 import { ChangeEvent } from "react";
 
 export interface InputProps {
-    name: string,
+    name: string | number,
     type?: InputType,
     placeholder: string,
     label?:string,

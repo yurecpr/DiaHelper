@@ -47,6 +47,7 @@ export const ProductCard = styled.div`
   background: linear-gradient(to bottom, #ffffff 0%, #669cac 100%);
   color: white;
   margin: 15px;
+  width: 230px;
 `;
 export const ProductTitle = styled.h3`
   width: 100%;

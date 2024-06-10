@@ -49,9 +49,9 @@ function LoginForm() {
   });
 
   const resetPassword = () => {
-    axios.post("api/auth/update", { email: formik.values[LOGIN_FIELD_NAMES.EMAIL] })
+    axios.put("api/auth/update", { email: formik.values[LOGIN_FIELD_NAMES.EMAIL] })
       .then(() => {
-        alert("Password reset email sent!");
+        alert("Password reset, email sent!");
       })
       .catch(error => {
         console.error("Failed to send password reset email", error);

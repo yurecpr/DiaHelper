@@ -17,9 +17,8 @@ export const UserInfoContainer  = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-
+overflow: hidden;
 padding: 15px;
-width: 40%;
 gap: 20px;
 color: white;
 background-color: rgba(0, 33, 77, 0.63);

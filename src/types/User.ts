@@ -10,7 +10,7 @@ export default interface UserValues {
     weight: number;
     height: number;
     age: number;
-    name: string;
+    username: string;
     active: boolean;
   }
 

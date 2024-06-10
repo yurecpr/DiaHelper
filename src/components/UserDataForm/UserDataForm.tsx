@@ -4,8 +4,16 @@ import * as Yup from "yup";
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 import UserValues, { USER_DATA_FORM_FIELD_NAMES } from "types/User";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
  function UserDataForm() {
+
+  const location = useLocation();
+  const userEmail = location.state?.email;
+  //console.log(userEmail);
+
+
   const shema = Yup.object().shape({
     [USER_DATA_FORM_FIELD_NAMES.GLUCOSE_LEVEL]: Yup.number()
     .typeError("Glucose level must be number")
@@ -32,8 +40,16 @@ import UserValues, { USER_DATA_FORM_FIELD_NAMES } from "types/User";
     validationSchema: shema,
     validateOnChange: false,
     validateOnMount: false,
-    onSubmit: (values: UserValues) => {
-      console.log(values);
+    onSubmit: async (values: UserValues) => {
+      try {
+        const response = await axios.put("/api/users/updated-user", {
+          userEmail,
+          ...values,
+        });
+        //console.log(response.data);
+      } catch (error) {
+        console.error("Error updating user data", error);
+      }
     },
   });
 
@@ -80,7 +96,7 @@ import UserValues, { USER_DATA_FORM_FIELD_NAMES } from "types/User";
         <ErrorMessage>{formik.errors[USER_DATA_FORM_FIELD_NAMES.HEIGHT]}</ErrorMessage>
       </InputContainer>
       </InputsContainer>
-      <Button type="button" name="Save Data" />
+      <Button type="submit" name="Save Data" />
     </UserDataFormComponent>
   )
 }

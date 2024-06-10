@@ -17,7 +17,7 @@ import {
   faChevronUp,
   faFaceGrinBeam,
   faTrash,
-  faX,
+
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "components/Button/Button";
 import UserDataForm from "components/UserDataForm/UserDataForm";
@@ -28,6 +28,7 @@ import {
   ProductTitle,
 } from "components/Products/styles";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function UserPage() {
   const [user, setUser] = useState<User | undefined>(undefined);
@@ -35,18 +36,30 @@ export default function UserPage() {
   const { favorites, removeFromFavorites } = useFavorites();
 
   const location = useLocation();
-
   const email = location.state?.email;
   console.log(email);
 
-  async function fetchUser(id: number) {
-    const res = await fetch(`/api/users?id=${id}`);
-    const data = await res.json();
-    setUser(data);
+  // async function fetchUser(id: number) {
+  //   const res = await fetch(`/api/users?id=${id}`);
+  //   const data = await res.json();
+  //   setUser(data);
+  // }
+
+  // useEffect(() => {
+  //   fetchUser(1);
+  // }, []);
+    async function fetchUser() {
+      try {
+        const response = await axios.get(`/api/users/profile?email=${email}`);
+        setUser(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
   }
 
   useEffect(() => {
-    fetchUser(1);
+     fetchUser();
   }, []);
 
   const toggleFormVisibility = () => {
@@ -58,7 +71,7 @@ export default function UserPage() {
       <UserInfoContainer>
         <UserInfoWrapper>
           <FontAwesomeIcon icon={faFaceGrinBeam} size="4x" />
-          {/* <UserName>{user?.name}</UserName> */}
+          {user && <UserName>Welcome, {user.username}</UserName>}
         </UserInfoWrapper>
         <FormWrapper isVisible={isFormVisible}>
           <UserDataForm />
@@ -79,7 +92,7 @@ export default function UserPage() {
             >
               <RemoveButtonWrapper>
                 <FontAwesomeIcon
-                  icon={faX}
+                  icon={faTrash}
                   onClick={() => removeFromFavorites(food.name)}
                   style={{ color: "green"}}
                 />

@@ -18,6 +18,7 @@ color: black;
 
 export const InputsContainer = styled.div`
 display: flex;
+flex-wrap: wrap;
 gap: 15px;
 
 `

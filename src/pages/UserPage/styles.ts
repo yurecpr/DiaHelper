@@ -19,7 +19,7 @@ flex-direction: column;
 align-items: center;
 overflow: hidden;
 padding: 15px;
-gap: 20px;
+gap: 10px;
 color: white;
 background-color: rgba(0, 33, 77, 0.63);
 border-radius: 100px 100px 0 0;
@@ -32,7 +32,7 @@ gap: 30px;
 
 `
 export const UserName  = styled.h3`
-font-size: 20px;
+font-size: 22px;
 `;
 export const FormWrapper = styled.div<isVisibleProps>`
   max-height: ${({ isVisible }) => (isVisible ? "500px" : "0")};
@@ -40,8 +40,6 @@ export const FormWrapper = styled.div<isVisibleProps>`
   transition:  0.8s ease-in-out;
  
 `;
-
-
 
 export const FavoriteInfoContainer  = styled.div`
 display: flex;
@@ -58,6 +56,9 @@ right: 10px;
 `
 
 export const UserMenuContainer  = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
 background-color: rgba(0, 33, 77, 0.73);
 width: 50%;
 `;
@@ -71,3 +72,9 @@ background-color: rgba(0, 33, 77, 0.5);
 
 `;
 
+export const InputButtonWrapper  = styled.div`
+display:  flex;
+align-items: flex-end;
+width: 66%;
+justify-content: center;
+`

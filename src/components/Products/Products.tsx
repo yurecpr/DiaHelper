@@ -127,7 +127,7 @@ function Products() {
         ) : (
           <FontAwesomeIcon icon={faUtensils} size="5x" />
         )}
-        <ProductText>{food.calories} kcal</ProductText>
+        <ProductText>{food.calories} kcal / 100g</ProductText>
         <ProductText>Fat: {food.fat}</ProductText>
 
         <Button onButtonClick={() => addFavorite(food)}>

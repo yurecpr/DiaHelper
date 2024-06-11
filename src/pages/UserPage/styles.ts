@@ -57,7 +57,7 @@ right: 10px;
 
 export const UserMenuContainer  = styled.div`
 display: flex;
-flex-direction: column;
+flex-wrap: wrap;
 gap: 10px;
 background-color: rgba(0, 33, 77, 0.73);
 width: 50%;
@@ -77,4 +77,16 @@ display:  flex;
 align-items: flex-end;
 width: 66%;
 justify-content: center;
+`
+export const UserMenuList  = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
+width: 48%;
+`
+export const UserCalculateContainer  = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
+width: 48%;
 `

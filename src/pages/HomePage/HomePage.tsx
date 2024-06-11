@@ -12,8 +12,9 @@ export default function HomePage() {
   return (
     <HomeContainer>
       <TextContainer>
+        <TextContent>Welcome to DiaHelper App!</TextContent>
         <TextContent>
-          <p>Welcome to DiaHelper App!</p>Go directly to registration and let us
+          Go directly to registration and let us
           create for you the best nutrition plan which helps you to live a
           healthy life. Or you can find all the necessary information on the
           diabetes by clicking on "Learn more" button. Change your lifestyle

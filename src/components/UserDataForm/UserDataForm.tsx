@@ -6,8 +6,10 @@ import Button from "components/Button/Button";
 import UserValues, { USER_DATA_FORM_FIELD_NAMES } from "types/User";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { UserDataFormProps } from "./types";
 
- function UserDataForm() {
+
+ function UserDataForm({ fetchUserData }: UserDataFormProps) {
 
   const location = useLocation();
   const userEmail = location.state?.email;
@@ -46,6 +48,7 @@ import { useLocation } from "react-router-dom";
           userEmail,
           ...values,
         });
+        fetchUserData();
         //console.log(response.data);
       } catch (error) {
         console.error("Error updating user data", error);
@@ -96,7 +99,7 @@ import { useLocation } from "react-router-dom";
         <ErrorMessage>{formik.errors[USER_DATA_FORM_FIELD_NAMES.HEIGHT]}</ErrorMessage>
       </InputContainer>
       </InputsContainer>
-      <Button type="submit" name="Save Data" />
+      <Button type="submit" name="Update Data" />
     </UserDataFormComponent>
   )
 }

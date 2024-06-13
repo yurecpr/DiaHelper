@@ -22,13 +22,15 @@ padding: 15px;
 gap: 10px;
 color: white;
 background-color: rgba(0, 33, 77, 0.63);
-border-radius: 100px 100px 0 0;
+border-radius: 25px 25px 0 0;
 `;
 
 export const UserInfoWrapper  = styled.div`
 display: flex;
 align-items: center;
-gap: 30px;
+justify-content: space-around;
+width: 100%;
+gap: 10px;
 
 `
 export const UserName  = styled.h3`
@@ -83,7 +85,15 @@ display: flex;
 flex-direction: column;
 gap: 10px;
 width: 48%;
+`;
+
+export const ProductListWrapper  = styled.div`
+display: flex;
+justify-content: space-around;
+align-items: center;
+
 `
+
 export const UserCalculateContainer  = styled.div`
 display: flex;
 flex-direction: column;

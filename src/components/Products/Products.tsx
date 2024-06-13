@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode, createContext, useContext, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Button from "components/Button/Button";
 import {
   ButtonWrapper,
@@ -14,7 +14,7 @@ import {
 import Input from "components/Input/Input";
 import axios from "axios";
 import Spinner from "components/Spinner/Spinner";
-import { FavoritesContextProps, ProductDataProps } from "./types";
+import { ProductDataProps } from "./types";
 import { ErrorMessage } from "components/LoginForm/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,42 +23,13 @@ import {
   faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const FavoritesContext = createContext<
-  FavoritesContextProps | undefined
->(undefined);
-
-export const FavoritesContextProvider = ({ children }: { children: ReactNode }) => {
-  const [favorites, setFavorites] = useState<ProductDataProps[]>([]);
-
-  const addFavorite = (product: ProductDataProps) => {
-    setFavorites((prevFavorites) => [...prevFavorites, product]);
-   };
-    const removeFromFavorites = (productName: string) => {
-      setFavorites((prevFavorites) => prevFavorites.filter((product) => product.name !== productName));
-    }
-
-    return (
-      <FavoritesContext.Provider value={{ favorites, addFavorite, removeFromFavorites}}>
-        {children}
-      </FavoritesContext.Provider>
-    );
- 
-};
-export const useFavorites = () => {
-  const context = useContext(FavoritesContext);
-  if (!context) {
-    throw new Error("useFavorites must be used within a FavoritesProvider");
-  }
-  return context;
-};
 
 function Products() {
   const [product, setProduct] = useState<string>("");
   const [foods, setFoods] = useState<ProductDataProps[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const { addFavorite } = useFavorites();
+  const [addedFavorites, setAddedFavorites] = useState<{ [key: string]: boolean }>({});
 
   const API_URL = "https://api.edamam.com/api/food-database/v2/parser";
   const APP_ID = "c63e1cf8";
@@ -101,10 +72,10 @@ function Products() {
     if (data && data.hints.length > 0) {
       const newFoods = data.hints.map((hint: any) => ({
         id: hint.food.foodId,
-        name: hint.food.label,
+        productTitle: hint.food.label,
         image: hint.food.image,
-        calories: hint.food.nutrients.ENERC_KCAL.toFixed(1),
-        fat: hint.food.nutrients.FAT.toFixed(1),
+        calories: Number(hint.food.nutrients.ENERC_KCAL.toFixed(1)),
+        carbohydrate: Number(hint.food.nutrients.CHOCDF.toFixed(1)),
       }));
       console.log(newFoods);
       setFoods(newFoods);
@@ -118,20 +89,39 @@ function Products() {
     setProduct(event.target.value);
   };
 
+  const addFavorite = async (product: ProductDataProps) => {
+    try {
+      console.log(product);
+      await axios.post("/api/users/favorites/add", {
+        productTitle: product.productTitle,
+        calories: product.calories,
+      });
+      setAddedFavorites((prevFavorites) => ({
+        ...prevFavorites,
+        [product.productTitle]: true,
+      }));
+    } catch (error) {
+      console.error("Error adding favorite", error);
+    }
+  };
+
   const renderProductCards = () => {
     return foods.map((food, index) => (
       <ProductCard key={index}>
-        <ProductTitle>{food.name}</ProductTitle>
+        <ProductTitle>{food.productTitle}</ProductTitle>
         {food.image ? (
-          <ProductImage src={food.image} alt={food.name} />
+          <ProductImage src={food.image} alt={food.productTitle} />
         ) : (
           <FontAwesomeIcon icon={faUtensils} size="5x" />
         )}
         <ProductText>{food.calories} kcal / 100g</ProductText>
-        <ProductText>Fat: {food.fat}</ProductText>
+        <ProductText>Carbohydrate: {food.carbohydrate}g</ProductText>
 
-        <Button onButtonClick={() => addFavorite(food)}>
-          <FontAwesomeIcon icon={faHeart} /> Add to Favorites
+        <Button onButtonClick={() => addFavorite(food)}
+         disabled={addedFavorites[food.productTitle]}
+          >
+          <FontAwesomeIcon icon={faHeart}  style={{ color: addedFavorites[food.productTitle] ? "red" : "white" }}/>
+          {addedFavorites[food.productTitle] ? "Added" : "Add to Favorites"}
         </Button>
       </ProductCard>
     ));

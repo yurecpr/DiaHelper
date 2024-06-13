@@ -3,3 +3,4 @@
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">I help millions of people with diabetes choose the right diet. 
 Just find your favorite foods and according to your data, you will find out your safe consumption rate.</h3>
+<p>Our project is still very young and we are constantly developing, but we hope that our idea will unite many like-minded people</p>

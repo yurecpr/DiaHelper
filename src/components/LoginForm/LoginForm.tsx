@@ -22,7 +22,7 @@ function LoginForm() {
   const shema = Yup.object().shape({
     [LOGIN_FIELD_NAMES.EMAIL]: Yup.string()
       .required("Filed email is required")
-      .email("Filed type email"),
+      .email("Failed type email"),
     [LOGIN_FIELD_NAMES.PASSWORD]: Yup.string()
       .required("Filed password is required")
   });

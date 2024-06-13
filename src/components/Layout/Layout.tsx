@@ -14,13 +14,12 @@ import {
   ContactLink,
 } from "./styles";
 import { LayotProps } from "./types";
-import { FavoritesContextProvider } from "components/Products/Products";
+
 
 
 
 function Layout({ children }: LayotProps) {
   return (
-    <FavoritesContextProvider>
     <LayoutComponent>
       <Header>
         <HeaderLogoContainer to="/">
@@ -87,7 +86,6 @@ function Layout({ children }: LayotProps) {
       </ContactsContainer>
       </Footer>
     </LayoutComponent>
-    </FavoritesContextProvider>
   );
 }
 

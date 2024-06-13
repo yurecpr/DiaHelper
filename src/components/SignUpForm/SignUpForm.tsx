@@ -12,10 +12,11 @@ import axios from "axios";
 
   const shema = Yup.object().shape({
     [SIGN_UP_FIELD_NAMES.USER_NAME]: Yup.string()
-      .required("Filed name is required"),
+      .required("Filed name is required")
+      .matches(/^[^\d]*$/, "Wrong type of name"),
     [SIGN_UP_FIELD_NAMES.EMAIL]: Yup.string()
       .required("Filed email is required")
-      .email("Filed type email"),
+      .email("Failed type email"),
     
   });
   const formik = useFormik({

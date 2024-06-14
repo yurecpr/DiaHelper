@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles";
 import Layout from "components/Layout/Layout";
 import LoginSignUpPage from "pages/Login-SignUpPage/LoginSignUpPage";
@@ -12,7 +12,7 @@ function App() {
 
   return (
     
-    <BrowserRouter>
+    <HashRouter>
       <GlobalStyles />
      <Layout>
      <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path="*" element="Page Not Found" />
         </Routes>
      </Layout>
-    </BrowserRouter>
+    </HashRouter>
    
   );
 }

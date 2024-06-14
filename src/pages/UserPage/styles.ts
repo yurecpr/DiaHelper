@@ -29,6 +29,7 @@ export const UserInfoWrapper  = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-around;
+flex-wrap: wrap;
 width: 100%;
 gap: 10px;
 
@@ -45,10 +46,15 @@ export const FormWrapper = styled.div<isVisibleProps>`
 
 export const FavoriteInfoContainer  = styled.div`
 display: flex;
+flex-wrap: wrap;
 width: 100%;
 gap: 15px;
 justify-content: space-around;
-
+@media (max-width: 700px) {
+  
+ flex-direction: column;
+ align-items: center;
+}
 `;
 
 export const RemoveButtonWrapper  = styled.div`
@@ -60,18 +66,23 @@ right: 10px;
 export const UserMenuContainer  = styled.div`
 display: flex;
 flex-wrap: wrap;
-gap: 10px;
-background-color: rgba(0, 33, 77, 0.73);
-width: 50%;
+gap: 20px;
+@media (max-width: 700px) {
+  
+  justify-content: center;
+}
 `;
 
 export const UserFavoriteContainer  = styled.div`
-width: 50%;
+width: 48%;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
 background-color: rgba(0, 33, 77, 0.5);
-
+border-radius: 20px;
+@media (max-width: 700px) {
+    width: 90%;
+  }
 `;
 
 export const InputButtonWrapper  = styled.div`
@@ -84,7 +95,12 @@ export const UserMenuList  = styled.div`
 display: flex;
 flex-direction: column;
 gap: 10px;
-width: 48%;
+background-color: rgba(0, 33, 77, 0.73);
+padding: 20px;
+border-radius: 20px;
+@media (max-width: 700px) {
+    width: 90%;
+  }
 `;
 
 export const ProductListWrapper  = styled.div`
@@ -98,5 +114,32 @@ export const UserCalculateContainer  = styled.div`
 display: flex;
 flex-direction: column;
 gap: 10px;
-width: 48%;
+padding: 20px;
+background-color: rgba(0, 33, 77, 0.73);
+border-radius: 20px;
+/* width: 48%; */
+`
+export const CircularProgress  = styled.div`
+position: relative;
+height: 250px;
+width: 250px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+&::before{
+  content: "";
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  background-color: #ffff;
+  border-radius: 50%;
+  border: 1px solid #003B4A;
+
+}
+`
+export const ProgressValue  = styled.span`
+position: relative;
+font-size: 26px;
+
 `

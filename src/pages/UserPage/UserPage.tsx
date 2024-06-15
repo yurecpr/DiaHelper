@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import User from "types/User";
 import {
+  CircularProgress,
   FavoriteInfoContainer,
   FormWrapper,
   InputButtonWrapper,
   ProductListWrapper,
+  ProgressValue,
   RemoveButtonWrapper,
   UserCalculateContainer,
   UserFavoriteContainer,
@@ -167,11 +169,44 @@ async function removeFromFavorites(productTitle: string, calories: number) {
   const logout = async () => {
     try {
       await axios.post("/api/auth/logout");
+      localStorage.clear();
       navigate("/login");
     } catch (error) {
       console.error("Error logging out:", error);
     }
   };
+
+  let circularProgress = useRef<HTMLDivElement>(null);
+  let progressValue = useRef<HTMLSpanElement>(null);
+
+
+  useEffect(() => {
+    const totalCalories = parseFloat(calculateTotalCalories());
+    const progressEndValue = maxCalories || 1; 
+    if (circularProgress.current) {
+      const progressAngle = (totalCalories / progressEndValue) * 360;
+      
+      if (totalCalories > progressEndValue) {
+        const exceededCalories = totalCalories - progressEndValue;
+        const exceededAngle = (exceededCalories / progressEndValue) * 360;
+        
+        console.log(exceededAngle);
+        circularProgress.current.style.background = `conic-gradient(
+          #F06060 0deg ${exceededAngle}deg,  
+           #79D08F 0deg
+        )`;
+      } else {
+        circularProgress.current.style.background = `conic-gradient(
+          #79D08F ${progressAngle}deg, 
+          #F5FFF1 ${progressAngle}deg
+        )`;
+      }
+    }
+  }, [calculateTotalCalories, maxCalories]);
+  
+
+  
+
  
 
   return (
@@ -201,12 +236,19 @@ async function removeFromFavorites(productTitle: string, calories: number) {
                 Your max calories: {maxCalories} kKal
               </TextContent>  
               <TextContent>
-              Total consumed calories: {calculateTotalCalories()} kKal
+              Consumed calories: {calculateTotalCalories()} kKal
               </TextContent>  
+
+            <CircularProgress ref={circularProgress}>
+              
+              <ProgressValue ref={progressValue}>{calculateTotalCalories()} kKal /<br/> {maxCalories} kKal</ProgressValue>
+            </CircularProgress>
+
+
           </UserCalculateContainer>
         )}
       
-        
+      {addedProducts.length > 0 && (
         <UserMenuList>
           {addedProducts.map((product, index) => (
             <ProductListWrapper key={index}>
@@ -222,6 +264,7 @@ async function removeFromFavorites(productTitle: string, calories: number) {
           ))}
           <Button name="Clear List" onButtonClick={clearAddedProducts}></Button>
         </UserMenuList>
+      )}
 
      
         </UserMenuContainer>

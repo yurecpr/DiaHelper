@@ -17,7 +17,7 @@ function LoginSignUpPage() {
       };
   return (
     <LoginSignUpContainer>
-      <ButtonWrapper><Button name="Sign Up Form" onButtonClick={toggleFormVisibility}></Button></ButtonWrapper>
+      <ButtonWrapper><Button name={isFormVisible? "Login Form": "Sign Up Form"} onButtonClick={toggleFormVisibility}></Button></ButtonWrapper>
       
       <LoginFormContainer isVisibleForm={isFormVisible}>
         <LoginForm />

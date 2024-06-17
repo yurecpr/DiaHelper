@@ -11,7 +11,7 @@ gap: 20px;
 flex-direction: column;
 align-items: center;
 padding: 20px;
-
+z-index: 2;
 `;
 export const UserInfoContainer  = styled.div`
 display: flex;

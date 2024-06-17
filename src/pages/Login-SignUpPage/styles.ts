@@ -9,7 +9,7 @@ export const LoginSignUpContainer = styled.div`
 display: block;
 margin: 10px auto;
 position: relative;
-z-index: 1;
+z-index: 2;
 
 `;
 

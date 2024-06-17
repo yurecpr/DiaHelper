@@ -39,8 +39,8 @@ export const Header = styled.header`
     left: 0;
     width: 100%;
     height: 100%;
-    
-  z-index: 2;
+    z-index: 2;
+  
   }
 `;
 
@@ -60,7 +60,7 @@ HeaderLogo.defaultProps = { src: Logo };
 export const HeaderBurger = styled.div<isActivBurgerProps>`
 display: none;
 @media (max-width:600px){
-  z-index: 3;
+  z-index: 5;
 display: block;
 position: relative;
 width: 30px;
@@ -110,7 +110,7 @@ export const NavContainer = styled.nav<isActivBurgerProps>`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  z-index: 4;
+  z-index: 2;
   transition: all 0.7s ease 0s;
   @media (max-width:600px){
     position: fixed;
@@ -121,7 +121,7 @@ export const NavContainer = styled.nav<isActivBurgerProps>`
     background-color: rgba(0, 33, 77, 0.83);
     padding: 100px 20px 30px;
     flex-direction: column;
-    z-index: 2;
+    z-index: 4;
     top: ${({isActivBurger}) => (isActivBurger ? "0" : "")};
     
   }
@@ -168,5 +168,5 @@ text-decoration: none;
 
 export const ContactsContainer = styled.div`
 font-size: 30px;
-color: white
+color: white;
 `;

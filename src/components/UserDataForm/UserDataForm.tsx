@@ -19,16 +19,16 @@ import { UserDataFormProps } from "./types";
   const shema = Yup.object().shape({
     [USER_DATA_FORM_FIELD_NAMES.GLUCOSE_LEVEL]: Yup.number()
     .typeError("Glucose level must be number")
-      .required("Filed is required"),
+      .required("Field is required"),
     [USER_DATA_FORM_FIELD_NAMES.AGE]: Yup.number()
     .typeError("Age must be number")
-      .required("Filed is required"),
+      .required("Field is required"),
     [USER_DATA_FORM_FIELD_NAMES.WEIGHT]: Yup.number()
     .typeError("Weight must be number")
-      .required("Filed is required"),
+      .required("Field is required"),
     [USER_DATA_FORM_FIELD_NAMES.HEIGHT]: Yup.number()
     .typeError("Height must be number")
-      .required("Filed is required"),
+      .required("Field is required"),
     
   });
   const formik = useFormik({

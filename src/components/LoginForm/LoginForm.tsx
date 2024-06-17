@@ -21,10 +21,10 @@ function LoginForm() {
   
   const shema = Yup.object().shape({
     [LOGIN_FIELD_NAMES.EMAIL]: Yup.string()
-      .required("Filed email is required")
+      .required("Field email is required")
       .email("Failed type email"),
     [LOGIN_FIELD_NAMES.PASSWORD]: Yup.string()
-      .required("Filed password is required")
+      .required("Field password is required")
   });
 
   const formik = useFormik({
@@ -75,7 +75,7 @@ function LoginForm() {
         <Input
           name={LOGIN_FIELD_NAMES.PASSWORD}
           type="password"
-          placeholder="Enter your password"
+          placeholder="Enter your password from email"
           label="Password"
           onInputChange={formik.handleChange}
           value={formik.values[LOGIN_FIELD_NAMES.PASSWORD]}

@@ -155,11 +155,9 @@ async function removeFromFavorites(productTitle: string, calories: number) {
     let totalCalories = 0;
     addedProducts.forEach((product) => {
       const food = favorites.find((item) => item.productTitle === product.name);
-       console.log(food);
       if (food) {
         const calories = (food.calories * product.quantity) / 100;
         totalCalories += calories;
-        console.log(totalCalories);
         
       }
     });
@@ -189,8 +187,7 @@ async function removeFromFavorites(productTitle: string, calories: number) {
       if (totalCalories > progressEndValue) {
         const exceededCalories = totalCalories - progressEndValue;
         const exceededAngle = (exceededCalories / progressEndValue) * 360;
-        
-        console.log(exceededAngle);
+
         circularProgress.current.style.background = `conic-gradient(
           #F06060 0deg ${exceededAngle}deg,  
            #79D08F 0deg
@@ -205,19 +202,25 @@ async function removeFromFavorites(productTitle: string, calories: number) {
   }, [calculateTotalCalories, maxCalories]);
   
 
-  
-
- 
 
   return (
     <UserPageContainer>
-      <UserInfoContainer>
+      {user ? ( <UserInfoContainer>
         <UserInfoWrapper>
           <FontAwesomeIcon icon={faFaceGrinBeam} size="4x" />
-          {user && <UserName>Welcome, {user.username.toUpperCase()}</UserName>}
+           <UserName>Welcome, {user.username.toUpperCase()}</UserName>
           <FontAwesomeIcon icon={faSignOutAlt} size="2x" onClick={logout} />
-          
         </UserInfoWrapper>
+        <UserInfoWrapper>
+          
+            <UserName>Age: {user.age}</UserName>
+            <UserName>Glucose level: {user.glucoseLevel}</UserName>
+            <UserName>Weight: {user.weight}</UserName>
+            <UserName>Height: {user.height}</UserName>
+
+ 
+        </UserInfoWrapper>
+
         <UserName>Enter your current data</UserName>
         <FormWrapper isVisible={isFormVisible}>
           <UserDataForm fetchUserData={fetchUser} />
@@ -226,6 +229,11 @@ async function removeFromFavorites(productTitle: string, calories: number) {
           <FontAwesomeIcon icon={isFormVisible ? faChevronUp : faChevronDown} />
         </Button>
       </UserInfoContainer>
+      ):(
+        <UserInfoWrapper>
+          Please log in to access your information.
+        </UserInfoWrapper>
+      )}
 
       <FavoriteInfoContainer>
       <UserMenuContainer>

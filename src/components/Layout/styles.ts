@@ -1,6 +1,11 @@
+
 import styled from "@emotion/styled";
 import { Banner, Logo } from "assets";
 import { Link, NavLink } from "react-router-dom";
+
+interface isActivBurgerProps {
+  isActivBurger: boolean,
+  }
 
 export const LayoutComponent = styled.div`
   display: flex;
@@ -26,12 +31,23 @@ export const Header = styled.header`
   position: sticky;
   left: 0;
   top: 0;
-  z-index: 1;
+  
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+  z-index: 2;
+  }
 `;
 
 export const HeaderLogoContainer = styled(Link)`
   width: 75px;
   height: 75px;
+  z-index: 3;
 `;
 
 export const HeaderLogo = styled.img`
@@ -41,10 +57,75 @@ export const HeaderLogo = styled.img`
 `;
 HeaderLogo.defaultProps = { src: Logo };
 
-export const NavContainer = styled.nav`
+export const HeaderBurger = styled.div<isActivBurgerProps>`
+display: none;
+@media (max-width:600px){
+  z-index: 3;
+display: block;
+position: relative;
+width: 30px;
+height: 20px;
+&::before, &::after{
+content: "";
+background-color: white;
+position: absolute;
+left: 0;
+width: 100%;
+height: 2px;
+transition: all 0.3s ease 0s;
+}
+&::before{
+  top: 0;
+  background-color: ${({ isActivBurger }) => (isActivBurger ? "yellow" : "white")};
+  transform: ${({isActivBurger}) => (isActivBurger ? "rotate(45deg)" : "")} ;
+  top: ${({isActivBurger}) => (isActivBurger ? "9px" : "0")};
+  
+}
+&::after{
+  bottom: 0;
+  background-color: ${({ isActivBurger }) => (isActivBurger ? "yellow" : "white")};
+  transform: ${({isActivBurger}) => (isActivBurger ? "rotate(-45deg)" : "")} ;
+  bottom: ${({isActivBurger}) => (isActivBurger ? "9px" : "0")};
+  
+   
+ }
+}
+
+
+`;
+
+export const HeaderBurgerElement = styled.span<isActivBurgerProps>`
+position: absolute;
+background-color: white;
+left: 0;
+width: 100%;
+height: 2px;
+top: 9px;
+transform: ${({isActivBurger}) => (isActivBurger ? "scale(0)" : "")} ;
+  
+
+`;
+
+export const NavContainer = styled.nav<isActivBurgerProps>`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  z-index: 4;
+  transition: all 0.7s ease 0s;
+  @media (max-width:600px){
+    position: fixed;
+    top:-100%;
+    left: 0;
+    width: 100%;
+    align-items: flex-end;
+    background-color: #5e5373;
+    
+    padding: 100px 20px 30px;
+    flex-direction: column;
+    z-index: 2;
+    top: ${({isActivBurger}) => (isActivBurger ? "0" : "")};
+    
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`

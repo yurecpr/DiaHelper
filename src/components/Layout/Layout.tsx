@@ -81,7 +81,7 @@ function Layout({ children }: LayotProps) {
         <HeaderLogoContainer to="/">
           <HeaderLogo />
         </HeaderLogoContainer>
-        <SocialIconsContainer>
+        {/* <SocialIconsContainer>
        
         <ContactLink href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} size="2x"/>
@@ -92,11 +92,10 @@ function Layout({ children }: LayotProps) {
         <ContactLink href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={faInstagram} size="2x" />
         </ContactLink>
-      </SocialIconsContainer>
+      </SocialIconsContainer> */}
       <ContactsContainer>
-        Contact us
-          <ContactLink href="tel:+4988888888">+49 888 88 888</ContactLink>
-          <ContactLink href="mailto:diahelper@gmail.com">diahelper@gmail.com</ContactLink>
+        About us
+          
       </ContactsContainer>
       </Footer>
     </LayoutComponent>

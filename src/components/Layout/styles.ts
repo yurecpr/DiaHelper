@@ -118,8 +118,7 @@ export const NavContainer = styled.nav<isActivBurgerProps>`
     left: 0;
     width: 100%;
     align-items: flex-end;
-    background-color: #5e5373;
-    
+    background-color: rgba(0, 33, 77, 0.83);
     padding: 100px 20px 30px;
     flex-direction: column;
     z-index: 2;
@@ -150,7 +149,7 @@ export const Footer = styled.footer`
   align-items: center;
   padding: 12px;
   width: 100%;
-  background-color: rgba(118, 118, 118, 0.33);
+  background-color: rgba(0, 33, 77, 0.83);
 `;
 
 
@@ -168,7 +167,6 @@ text-decoration: none;
 `
 
 export const ContactsContainer = styled.div`
- display: flex;
- flex-direction: column;
- gap: 7px;
+font-size: 30px;
+color: white
 `;

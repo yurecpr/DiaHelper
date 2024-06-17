@@ -28,7 +28,7 @@ export const Header = styled.header`
   padding: 12px 20px;
   width: 100%;
   background-color: rgba(118, 118, 118, 0.33);
-  position: sticky;
+  
   left: 0;
   top: 0;
   

@@ -5,6 +5,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  z-index: 2;
   align-items: end;
   @media (max-width: 600px) {
    padding: 10px;

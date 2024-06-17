@@ -6,6 +6,7 @@ export const ProductsContainer = styled.div`
   gap: 20px;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
   
 `;
 

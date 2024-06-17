@@ -1,14 +1,33 @@
 import LoginForm from "components/LoginForm/LoginForm";
 import SignUpForm from "components/SignUpForm/SignUpForm";
-import { LoginSignUpContainer } from "./styles";
+import {
+    ButtonWrapper,
+  LoginFormContainer,
+  LoginSignUpContainer,
+  SignUpFormContainer,
+} from "./styles";
+import Button from "components/Button/Button";
+import { useState } from "react";
+
 
 function LoginSignUpPage() {
-    return (
-        <LoginSignUpContainer>
-            <LoginForm/>
-            <SignUpForm/>
-        </LoginSignUpContainer>
-    )
+    const [isFormVisible, setIsFormVisible] = useState<boolean>(false);
+    const toggleFormVisibility = () => {
+        setIsFormVisible((prev) => !prev);
+      };
+  return (
+    <LoginSignUpContainer>
+      <ButtonWrapper><Button name="Sign Up Form" onButtonClick={toggleFormVisibility}></Button></ButtonWrapper>
+      
+      <LoginFormContainer isVisibleForm={isFormVisible}>
+        <LoginForm />
+      </LoginFormContainer>
+      <SignUpFormContainer isVisibleForm={isFormVisible}>
+        <SignUpForm />
+      </SignUpFormContainer>
+      
+    </LoginSignUpContainer>
+  );
 }
 
 export default LoginSignUpPage;

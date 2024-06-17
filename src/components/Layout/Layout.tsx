@@ -12,20 +12,34 @@ import {
   ContactsContainer,
   SocialIconsContainer,
   ContactLink,
+  HeaderBurger,
+  HeaderBurgerElement,
+
 } from "./styles";
 import { LayotProps } from "./types";
+import { useState } from "react";
 
 
 
 
 function Layout({ children }: LayotProps) {
+  const [isActiveBurger, setIsActiveBurger] = useState<boolean>(false);
+
+  const activeBurger = () => {
+    setIsActiveBurger((prev) => !prev);
+  };
+
   return (
     <LayoutComponent>
       <Header>
         <HeaderLogoContainer to="/">
           <HeaderLogo />
         </HeaderLogoContainer>
-        <NavContainer>
+        <HeaderBurger onClick={activeBurger} isActivBurger={isActiveBurger}>
+          <HeaderBurgerElement isActivBurger={isActiveBurger}></HeaderBurgerElement>
+        </HeaderBurger>
+        
+        <NavContainer isActivBurger={isActiveBurger}>
           <StyledNavLink
             to="/"
             style={({ isActive }) => ({

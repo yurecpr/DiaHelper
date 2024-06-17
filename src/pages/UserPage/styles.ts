@@ -34,8 +34,10 @@ width: 100%;
 gap: 10px;
 
 `
+
 export const UserName  = styled.h3`
 font-size: 22px;
+display: flex;
 `;
 export const FormWrapper = styled.div<isVisibleProps>`
   max-height: ${({ isVisible }) => (isVisible ? "500px" : "0")};
@@ -127,6 +129,9 @@ border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
+/* transition: all 0.7s ease 0s; */
+transition-duration: 0.9s linear;
+
 &::before{
   content: "";
   position: absolute;
@@ -135,7 +140,7 @@ justify-content: center;
   background-color: #ffff;
   border-radius: 50%;
   border: 1px solid #003B4A;
-
+  transition-duration: 9s;
 }
 `
 export const ProgressValue  = styled.span`

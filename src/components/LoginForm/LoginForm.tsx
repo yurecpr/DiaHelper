@@ -43,7 +43,7 @@ function LoginForm() {
           setErrorMessage("Invalid email or password");
            console.error("Login failed", error);
          });
-      console.log(values);
+      // console.log(values);
       
     },
   });

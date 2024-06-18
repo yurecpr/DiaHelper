@@ -68,7 +68,7 @@ export default function UserPage() {
        const calculatedMaxCalories = userData.weight * 25;
        setMaxCalories(calculatedMaxCalories);
        //console.log(userData.weight);
-       console.log(userData);
+      // console.log(userData);
        //console.log(calculatedMaxCalories);
   
       } catch (error) {

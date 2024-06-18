@@ -7,10 +7,12 @@ export const AboutUsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   z-index: 2;
+  /* background-color: rgba(0, 33, 77, 0.83); */
 `;
 export const AboutUsTitle = styled.h2`
-  font-size: 30px;
+  font-size: 36px;
   color: white;
+
 `;
 export const AboutUsWrapper = styled.div`
   display: flex;
@@ -29,7 +31,8 @@ export const DeveloperCard = styled.div`
   border-radius: 5px;
   width: auto;
   text-align: center;
-  background-color:#394BBC;
+  background-color:rgba(0, 33, 77, 0.83);
+  gap: 15px;
 `;
 export const DeveloperInfoContainer = styled.div`
   display: flex;
@@ -38,12 +41,16 @@ export const DeveloperInfo = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const DeveloperName = styled.h3``;
+export const DeveloperName = styled.h3`
+color: white;
+font-size: 24px;
+`;
 
 export const DeveloperImg = styled.img`
   width: 200px; 
   height: 200px; 
-  border-radius: 50%; 
+  border-radius: 50%;
+  border: 1px solid white ;
   object-fit: cover; 
   margin-bottom: 10px; 
 `;

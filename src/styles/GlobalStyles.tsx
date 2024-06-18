@@ -27,6 +27,7 @@ const globalStyles = css`
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 `;
 

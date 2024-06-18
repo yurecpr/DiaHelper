@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { useNavigate } from "react-router-dom";
 import {
   Footer,
   Header,
@@ -10,8 +9,6 @@ import {
   NavContainer,
   StyledNavLink,
   ContactsContainer,
-  SocialIconsContainer,
-  ContactLink,
   HeaderBurger,
   HeaderBurgerElement,
 
@@ -20,14 +17,14 @@ import { LayotProps } from "./types";
 import { useState } from "react";
 
 
-
-
 function Layout({ children }: LayotProps) {
   const [isActiveBurger, setIsActiveBurger] = useState<boolean>(false);
 
   const activeBurger = () => {
     setIsActiveBurger((prev) => !prev);
   };
+
+  const navigate = useNavigate()
 
   return (
     <LayoutComponent>
@@ -81,21 +78,9 @@ function Layout({ children }: LayotProps) {
         <HeaderLogoContainer to="/">
           <HeaderLogo />
         </HeaderLogoContainer>
-        {/* <SocialIconsContainer>
        
-        <ContactLink href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} size="2x"/>
-        </ContactLink>
-        <ContactLink href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-        <FontAwesomeIcon icon={faTwitter} size="2x" />
-        </ContactLink>
-        <ContactLink href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-        <FontAwesomeIcon icon={faInstagram} size="2x" />
-        </ContactLink>
-      </SocialIconsContainer> */}
-      <ContactsContainer>
-        About us
-          
+      <ContactsContainer onClick={() => navigate("/about")}>
+        About us 
       </ContactsContainer>
       </Footer>
     </LayoutComponent>

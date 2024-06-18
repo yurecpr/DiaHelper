@@ -6,6 +6,7 @@ import UserPage from "pages/UserPage/UserPage";
 import HomePage from "pages/HomePage/HomePage";
 import InfoPage from "pages/InfoPage/InfoPage";
 import ProductPage from "pages/ProductPage/ProductPage";
+import AboutUsPage from "pages/AboutUsPage/AboutUsPage";
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
           <Route path="/login" element={<LoginSignUpPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/info-page" element={<InfoPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+
 
           <Route path="*" element="Page Not Found" />
         </Routes>

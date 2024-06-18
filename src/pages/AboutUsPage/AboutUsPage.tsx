@@ -7,7 +7,7 @@ import {
   AlexeyImage,
   DianaImage,
   YuriiImage,
-} from "../../assets/image";
+} from "assets/image";
 import {
   AboutUsContainer,
   AboutUsTitle,

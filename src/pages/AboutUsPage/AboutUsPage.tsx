@@ -20,7 +20,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/nata-kyrylenko/",
     xing: "https://www.xing.com/profile/Nataliia_Kyrylenko/web_profiles?expandNeffi=true",
     github: "https://github.com/NataKyrylenko",
-    img: "/src/assets/Team/Nata.jpg", 
+    img: "./src/assets/Team/Nata.jpg", 
   },
   {
     name: "Yurii Bolharyn",
@@ -28,7 +28,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/yurii-bolharyn-30a92a293/",
     xing: "https://www.xing.com/profile/Yurii_Bolharyn/web_profiles?expandNeffi=true",
     github: "https://github.com/yurecpr",
-    img: "/src/assets/Team/Yurii.jpg",
+    img: "./src/assets/Team/Yurii.jpg",
   },
   {
     name: "Svitlana Petrakova",

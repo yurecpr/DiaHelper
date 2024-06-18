@@ -1,4 +1,6 @@
 import { ContactLink } from "components/Layout/styles";
+import nataImage from "src/assets/Team/nata.jpg";
+import yuriiImage from "src/assets/Team/yurii.jpg";
 import {
   AboutUsContainer,
   AboutUsTitle,
@@ -20,7 +22,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/nata-kyrylenko/",
     xing: "https://www.xing.com/profile/Nataliia_Kyrylenko/web_profiles?expandNeffi=true",
     github: "https://github.com/NataKyrylenko",
-    img: "./src/assets/Team/Nata.jpg", 
+    img: nataImage, 
   },
   {
     name: "Yurii Bolharyn",

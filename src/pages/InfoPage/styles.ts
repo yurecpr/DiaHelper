@@ -6,7 +6,6 @@ flex-direction: column;
 padding: 20px;
 align-items: center;
 gap: 20px;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 color: black;
 border-style: double;
 background-color: rgba(215, 213, 213, 0.53);

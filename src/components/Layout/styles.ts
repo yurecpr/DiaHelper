@@ -169,4 +169,6 @@ text-decoration: none;
 export const ContactsContainer = styled.div`
 font-size: 30px;
 color: white;
+cursor: pointer;
+z-index: 3;
 `;

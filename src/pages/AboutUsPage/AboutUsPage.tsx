@@ -1,6 +1,13 @@
 import { ContactLink } from "components/Layout/styles";
-import nataImage from "src/assets/Team/nata.jpg";
-import yuriiImage from "src/assets/Team/yurii.jpg";
+import {
+  NataImage,
+  YadyaImage,
+  NastiiaImage,
+  SvetaImage,
+  AlexeyImage,
+  DianaImage,
+  YuriiImage,
+} from "../../assets/image";
 import {
   AboutUsContainer,
   AboutUsTitle,
@@ -13,7 +20,11 @@ import {
   IconContainer,
 } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedinIn, faXing } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedinIn,
+  faXing,
+} from "@fortawesome/free-brands-svg-icons";
 
 const developers = [
   {
@@ -22,7 +33,8 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/nata-kyrylenko/",
     xing: "https://www.xing.com/profile/Nataliia_Kyrylenko/web_profiles?expandNeffi=true",
     github: "https://github.com/NataKyrylenko",
-    img: nataImage, 
+    // img: "tree/main/src/assets/Team/Nata.jpg",
+    img: NataImage,
   },
   {
     name: "Yurii Bolharyn",
@@ -30,7 +42,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/yurii-bolharyn-30a92a293/",
     xing: "https://www.xing.com/profile/Yurii_Bolharyn/web_profiles?expandNeffi=true",
     github: "https://github.com/yurecpr",
-    img: "./src/assets/Team/Yurii.jpg",
+    img: YuriiImage,
   },
   {
     name: "Svitlana Petrakova",
@@ -38,7 +50,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/svitlana-petrakova-b67558314/",
     xing: "#",
     github: "#",
-    img: "/src/assets/Team/Sveta.jpg", 
+    img: SvetaImage,
   },
   {
     name: "Yadviga Demianova",
@@ -46,7 +58,7 @@ const developers = [
     linkedin: "#/",
     xing: "#",
     github: "https://github.com/YadyaDeman",
-    img: "/src/assets/Team/", 
+    img: YadyaImage,
   },
   {
     name: "Anastasiia Popova",
@@ -54,7 +66,7 @@ const developers = [
     linkedin: "http://www.linkedin.com/in/anastasiia-popova-851448314",
     xing: "#https://www.xing.com/profile/Anastasiia_Popova048461",
     github: "https://github.com/AnastasiiaPopova17",
-    img: "/src/assets/Team/Nastiia.jpg", 
+    img: NastiiaImage,
   },
   {
     name: "Diana Lukovsky",
@@ -62,7 +74,7 @@ const developers = [
     linkedin: "https://www.linkedin.com/in/diana-lukovsky/",
     xing: "#",
     github: "https://github.com/DianaLukovskyi",
-    img: "/src/assets/Team/Diana.jpg", 
+    img: DianaImage,
   },
   {
     name: "Alexei Ruscan",
@@ -70,9 +82,9 @@ const developers = [
     linkedin: "#/",
     xing: "#",
     github: "https://github.com/AleksInPlay?tab=repositories",
-    img: "/src/assets/Team/Alexey.jpg", 
+    img: AlexeyImage,
   },
-  ];
+];
 function AboutUsPage() {
   return (
     <AboutUsContainer>
@@ -94,7 +106,11 @@ function AboutUsPage() {
               <ContactLink href={dev.xing} target="_blank">
                 <FontAwesomeIcon icon={faXing} size="2x" />
               </ContactLink>
-              <ContactLink href={dev.github} target="_blank" rel="noopener noreferrer">
+              <ContactLink
+                href={dev.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FontAwesomeIcon icon={faGithub} size="2x" />
               </ContactLink>
             </IconContainer>

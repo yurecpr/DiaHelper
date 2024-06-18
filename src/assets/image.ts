@@ -1,7 +1,7 @@
-export { default as NataImage } from './team/Nata.jpg';
-export { default as YuriiImage } from './team/Yurii.jpg';
-export { default as SvetaImage } from './team/Sveta.jpg';
-export { default as NastiiaImage } from './team/Nastiia.jpg';
-export { default as YadyaImage } from './team/Yadya.jpg';
-export { default as DianaImage } from './team/Diana.jpg';
-export { default as AlexeyImage } from './team/Alexey.jpg';
+export { default as NataImage } from './Nata.jpg';
+export { default as YuriiImage } from './Yurii.jpg';
+export { default as SvetaImage } from './Sveta.jpg';
+export { default as NastiiaImage } from './Nastiia.jpg';
+export { default as YadyaImage } from './Yadya.jpg';
+export { default as DianaImage } from './Diana.jpg';
+export { default as AlexeyImage } from './Alexey.jpg';
